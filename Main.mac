@@ -1,0 +1,54 @@
+#=====================================================
+# VERBOSE and VISUALISATION
+#=====================================================
+
+#/control/execute macros/Verbose.mac
+#/control/execute macros/visu.mac
+/vis/disable
+
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/control/execute macros/Geometry.mac
+
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList emlivermore_polar
+
+
+#=====================================================
+# SOURCE
+#=====================================================
+/gate/run/initialize
+/control/execute macros/single_particle_source.mac
+
+
+#=====================================================
+# OUTPUT
+#=====================================================
+
+/control/execute macros/Output.mac
+
+#=====================================================
+# INITIALIZE
+#=====================================================
+
+#/gate/run/initialize
+
+/gate/output/allowNoOutput
+/gate/application/setTotalNumberOfPrimaries 100000000
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+/gate/application/setTimeSlice     1 s
+/gate/application/setTimeStart     0. s
+/gate/application/setTimeStop      1. s
+
+/gate/application/startDAQ
+

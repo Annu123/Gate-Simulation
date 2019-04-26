@@ -1,0 +1,79 @@
+
+
+/gate/geometry/setMaterialDatabase GateMaterials.db
+
+
+
+# G E O M E T R Y
+#####
+
+# World
+# Define the world dimensions
+##
+/gate/world/geometry/setXLength 100 cm
+/gate/world/geometry/setYLength 100 cm
+/gate/world/geometry/setZLength 100 cm
+
+##
+/gate/world/daughters/name MammoPET
+/gate/world/daughters/systemType scanner
+/gate/world/daughters/insert box
+/gate/MammoPET/geometry/setXLength  10. cm
+/gate/MammoPET/geometry/setYLength 56. mm
+/gate/MammoPET/geometry/setZLength 50. cm
+#/gate/MammoPET/placement/setTranslation  20.0 0. 0. cm
+/gate/MammoPET/setMaterial Air
+#/gate/MammoPET/ring/setRepeatNumber 4
+
+/gate/MammoPET/daughters/name Layer1
+/gate/MammoPET/daughters/insert box
+/gate/Layer1/geometry/setXLength 91. mm
+/gate/Layer1/geometry/setYLength 24. mm
+/gate/Layer1/geometry/setZLength 50. cm
+
+# Layer1- Plastic Scintillator
+# Create a full volume defining the shape of the Layer1
+##
+/gate/Layer1/daughters/name Scintillator
+/gate/Layer1/daughters/insert box
+/gate/Scintillator/geometry/setXLength 6. mm
+/gate/Scintillator/geometry/setYLength 24. mm
+/gate/Scintillator/geometry/setZLength 500. mm
+#/gate/Scintillator/placement/setTranslation  20. 0. 0. cm
+/gate/Scintillator/setMaterial EJ230
+/gate/Scintillator/repeaters/insert linear
+/gate/Scintillator/linear/setRepeatNumber 13
+/gate/Scintillator/linear/setRepeatVector 7. 0. 0. mm 
+/gate/Scintillator/vis/setColor blue
+/gate/Scintillator/vis/forceSolid
+
+/gate/Layer1/repeaters/insert linear
+/gate/Layer1/linear/setRepeatNumber 2
+/gate/Layer1/linear/setRepeatVector 0. 32. 0. mm
+
+
+# WLS
+# Create the wls volume
+##
+/gate/MammoPET/daughters/name wls
+/gate/MammoPET/daughters/insert box
+/gate/wls/geometry/setXLength 100. mm
+/gate/wls/geometry/setYLength 6. mm
+/gate/wls/geometry/setZLength 10. mm
+/gate/wls/repeaters/insert linear
+/gate/wls/linear/setRepeatNumber 50
+/gate/wls/linear/setRepeatVector 0. 0. 10. mm 
+/gate/wls/setMaterial EJ230
+/gate/wls/vis/setColor green
+
+
+/gate/MammoPET/repeaters/insert linear
+/gate/MammoPET/linear/setRepeatNumber 2
+/gate/MammoPET/linear/setRepeatVector 0. 200. 0. mm
+
+/gate/systems/MammoPET/level3/attach Scintillator
+/gate/Scintillator/attachCrystalSD
+
+/gate/systems/MammoPET/level1/attach wls
+/gate/wls/attachCrystalSD
+

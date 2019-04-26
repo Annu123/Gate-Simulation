@@ -1,0 +1,20 @@
+/gate/actor/addActor SimulationStatisticActor Statistics
+/gate/actor/Statistics/save output/Statistics.txt
+
+
+#/gate/actor/addActor PhaseSpaceActor CreatedParticles
+#/gate/actor/CreatedParticles/attachTo world
+#/gate/actor/CreatedParticles/save output/Source.root
+#/gate/actor/CreatedParticles/storeSecondaries true
+#/gate/actor/CreatedParticles/enablePDGCode true
+#/gate/actor/CreatedParticles/enablePolarization true
+#/gate/actor/CreatedParticles/storeAllStep true
+
+
+/gate/output/root/enable
+/gate/output/root/setFileName Source 
+/gate/output/root/setRootHitFlag 1
+/gate/output/root/setRootSinglesFlag 0
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootOpticalFlag 0
+/gate/output/verbose 0

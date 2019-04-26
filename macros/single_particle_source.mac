@@ -1,0 +1,22 @@
+/gate/source/addSource GAMMA
+
+/gate/source/GAMMA/setType backtoback
+/gate/source/GAMMA/gps/particle gamma
+#/gate/source/GAMMA/gps/type Point
+
+/gate/source/GAMMA/gps/monoenergy 511. keV
+
+/gate/source/GAMMA/gps/pos/centre 0 0 0 cm
+
+
+/gate/source/GAMMA/gps/angtype iso
+/gate/source/GAMMA/gps/mintheta 33. deg
+/gate/source/GAMMA/gps/maxtheta 147. deg
+/gate/source/GAMMA/gps/minphi 0. deg
+/gate/source/GAMMA/gps/maxphi 360. deg
+
+#/gate/source/GAMMA/gps/polarization 1 0 0
+
+
+
+
